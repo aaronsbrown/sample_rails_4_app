@@ -1,6 +1,6 @@
 require 'active_support/inflector'
 
-guard 'rspec', all_after_pass: false do
+guard :rspec, cmd: 'zeus rspec', all_after_pass: false do
   #watch(%r{^spec/.+_spec\.rb$})
   #watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   #watch('spec/spec_helper.rb')  { "spec" }
