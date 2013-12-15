@@ -16,7 +16,11 @@ gem 'pg', '0.15.1'
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.14'
+  gem 'guard'
   gem 'guard-rspec', '4.2.0'
+  gem 'guard-livereload', require: false
+  gem 'rack-livereload'
+  gem 'rb-fsevent', require: false
 end
 
 group :test do
