@@ -1,24 +1,24 @@
 require 'spec_helper'
 
 feature "StaticPages" do
-  
+
+  subject { page }
+
   given(:base_title) { "Ruby on Rails Tutorial Sample App" }
 
   context "Home Page" do
+    before { visit root_path }
 
     scenario "should have the content 'Sample App'" do
-      visit '/static_pages/home'
-      expect(page).to have_content('Sample App')
+      should have_content('Sample App')
     end
 
     scenario "should have base title" do
-      visit '/static_pages/home'
-      expect(page).to have_title("#{base_title}")
+      should have_title("#{base_title}")
     end
 
     scenario "should not have a custom page title" do
-      visit '/static_pages/home'
-      expect(page).not_to have_title("| Home")
+      should_not have_title("| Home")
     end
 
   end
@@ -26,13 +26,13 @@ feature "StaticPages" do
   context "Help Page" do
 
     scenario "Help Page should have the content 'Help'" do
-      visit '/static_pages/help'
-      expect(page).to have_content('Help')
+      visit help_path
+      should have_content('Help')
     end
 
     scenario "should have the right title" do
-      visit '/static_pages/help'
-      expect(page).to have_title("#{base_title} | Help")
+      visit help_path
+      should have_title("#{base_title} | Help")
     end
 
   end
@@ -40,13 +40,13 @@ feature "StaticPages" do
   context "About Page" do
 
     scenario "About page should have the content 'About Us'" do
-      visit '/static_pages/about'
-      expect(page).to have_content('About Us')
+      visit about_path
+      should have_content('About Us')
     end
 
     scenario "should have the right title" do
-      visit '/static_pages/about'
-      expect(page).to have_title("#{base_title} | About")
+      visit about_path
+      should have_title("#{base_title} | About")
     end
 
   end
@@ -54,13 +54,13 @@ feature "StaticPages" do
   context "Contact Page" do
 
     scenario "Contact page should have the content 'Contact Ruby on Rails'" do
-      visit '/static_pages/contact'
-      expect(page).to have_content('Contact Ruby on Rails')
+      visit contact_path
+      should have_content('Contact Ruby on Rails')
     end
 
     scenario "should have the right title" do
-      visit '/static_pages/contact'
-      expect(page).to have_title("#{base_title} | Contact")
+      visit contact_path
+      should have_title("#{base_title} | Contact")
     end
 
   end
