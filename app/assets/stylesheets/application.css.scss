@@ -10,5 +10,8 @@
  *
  */
 
-@import 'bootstrap';
-@import 'custom';
+
+// require rather than import in order to have smaller recompilation targets, good for live reload
+//= require bootstrap
+//= require globals
+//= require custom
