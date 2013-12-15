@@ -11,6 +11,22 @@ feature "Static pages" do
     scenario { should have_title(full_title(page_title)) }
   end
 
+  scenario "have valid links" do
+    visit root_path
+    click_link "About"
+    should have_title(full_title('About'))
+    click_link 'Help'
+    should have_title(full_title('Help'))
+    click_link 'Contact'
+    should have_title(full_title('Contact'))
+    click_link 'Home'
+    should have_title(base_title)
+    click_link 'Sign up now!'
+    should have_title(full_title('Sign up'))
+    click_link 'Sample App'
+    should have_title(base_title)
+  end
+
   context "Home Page" do
     before { visit root_path }
 
