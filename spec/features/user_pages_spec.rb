@@ -22,13 +22,13 @@ feature "User pages" do
 	  		expect { click_button submit }.not_to change(User, :count)
 	  	end
 
-	  	# scenario "with valid information" do 
-	  	# 	fill_in "Name", with: "Example User"
-	  	# 	fill_in "Email", with: "user@xample.com"
-	  	# 	fill_in "Password", with: "password"
-	  	# 	fill_in "Password Confirmation", with: "password"
-	  	# 	expect { click_button submit }.to change(User, :count).by(1)
-	  	# end
+	  	scenario "with valid information" do 
+	  		fill_in "Name", with: "Example User"
+	  		fill_in "Email", with: "user@xample.com"
+	  		fill_in "Password", with: "password"
+	  		fill_in "Password Confirmation", with: "password"
+	  		expect { click_button submit }.to change(User, :count).by(1)
+	  	end
 		end
 	end
 
