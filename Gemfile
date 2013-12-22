@@ -14,20 +14,23 @@ gem 'jbuilder', '1.0.2'
 gem 'pg', '0.15.1'
 gem 'bcrypt-ruby', '3.1.2'
 
-group :development, :test do
+group :development do
   gem 'sqlite3', '1.3.8'
-  gem 'rspec-rails', '2.14'
   gem 'guard'
   gem 'guard-rspec', '4.2.0'
   gem 'guard-livereload', require: false
   gem 'rack-livereload'
   gem 'rb-fsevent', require: false
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'thin', require: false
 end
 
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
   gem 'factory_girl_rails'
+  gem 'rspec-rails', '2.14'
 end
 
 group :production do

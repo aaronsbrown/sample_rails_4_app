@@ -29,3 +29,4 @@ SampleApp::Application.configure do
 
   config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
 end
+BetterErrors.use_pry!
