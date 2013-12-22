@@ -1,12 +1,6 @@
 @import 'globals';
 
 
-@mixin box_sizing {
-	-moz-box-sizing: border-box;
-	 -webkit-box-sizing: border-box;
-	 box-sizing: border-box;
-}
-
 /****************************************************************/
 
 html {
@@ -120,6 +114,19 @@ footer {
 	margin-right: 10px;
 }
 
+/* Forms */
+#error_explanation {
+	color: #a94442;
+	ul {
+		list-style: none;
+		margin: 0 0 18px 0;
+	}
+}
+
+.field_with_errors {
+	@extend .has-error;
+}
+
 /* misc */
 
 .debug_dump {
@@ -127,5 +134,5 @@ footer {
 	float: left;
 	width: 100%;
 	margin-top: 45px;
-	@include box-sizing;
+	@include box-sizing(border-box);
 }
