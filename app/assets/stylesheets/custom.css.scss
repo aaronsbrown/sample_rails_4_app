@@ -124,6 +124,8 @@ footer {
 }
 
 .field_with_errors {
+	// THIS SUCKS! Will add .field_with_errors EVERYWHERE that .has-error shows up in 
+	// bootstrap!!!!
 	@extend .has-error;
 }
 
