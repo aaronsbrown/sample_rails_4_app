@@ -25,12 +25,12 @@ feature 'Authentication Pages' do
 
 			let(:user) { FactoryGirl.create(:user) }
 			before do
-				valid_signin(user)
+				signin(user)
 			end
 
 			scenario { page.should have_title(full_title(user.name)) }
 			scenario { page.should have_link('Profile', href: user_path(user)) }
-			scenario { page.should have_link('Settings') }
+			scenario { page.should have_link('Settings', href: edit_user_path(user)) }
 			scenario { page.should have_link('Sign Out', href: signout_path) }
 			scenario { page.should_not have_link('Sign In', href: signin_path) }
 

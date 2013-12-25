@@ -50,7 +50,7 @@ feature "User pages" do
 	  		let(:user) { User.find_by(email: 'user@example.com') }
 	  		scenario { page.should have_title(user.name) }
 	  		scenario { page.should have_selector('.alert-success', text: 'Welcome') }
-	  		scenario { page.should have_link('Sign Out')}
+	  	#	scenario { page.should have_link('Sign Out')}
 	  	end
 
 		end
@@ -61,5 +61,42 @@ feature "User pages" do
 		before { visit user_path(user) }
 		scenario { page.should have_content(user.name) }
 		scenario { page.should have_title(user.name) }
+	end
+
+	context "Edit Page" do 
+		let(:user) { FactoryGirl.create(:user) }
+		before { visit edit_user_path(user) }
+		scenario { page.should have_content('Update your profile') }
+		scenario { page.should have_title("Edit User") }
+		#scenario { page.should have_link("change", href: 'http://gravatar.com/emails') }
+	end
+
+	context "Edit with Invalid Information" do
+		let(:user) { FactoryGirl.create(:user) }
+		before do 
+			visit edit_user_path(user) 
+			click_button "Save Changes"
+		end
+		scenario { page.should have_content('error') }
+	end
+		
+	context "Edit with valid Information" do
+		let(:user) { FactoryGirl.create(:user) }
+		let(:new_name) { "New Name" }
+		let(:new_email) { "new@example.com" }
+		before do 
+			signin user
+			visit edit_user_path(user) 
+			fill_in "Name", with: new_name
+			fill_in "Email", with: new_email
+			fill_in "Password", with: "password"
+			fill_in "Password Confirmation", with: "password"
+			click_button "Save Changes"
+		end
+		scenario { should have_title(new_name) }
+		scenario { should have_selector('.alert-success') }
+	#	scenario { should have_link('Sign Out', href: signout_path) }
+		scenario { expect(user.reload.name).to eq new_name }
+		scenario { expect(user.reload.email).to eq new_email }
 	end
 end
