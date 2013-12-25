@@ -50,6 +50,7 @@ feature "User pages" do
 	  		let(:user) { User.find_by(email: 'user@example.com') }
 	  		scenario { page.should have_title(user.name) }
 	  		scenario { page.should have_selector('.alert-success', text: 'Welcome') }
+	  		scenario { page.should have_link('Sign Out')}
 	  	end
 
 		end
