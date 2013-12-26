@@ -29,6 +29,7 @@ feature 'Authentication Pages' do
 			end
 
 			scenario { page.should have_title(full_title(user.name)) }
+			scenario { page.should have_link('Users', href: users_path) }
 			scenario { page.should have_link('Profile', href: user_path(user)) }
 			scenario { page.should have_link('Settings', href: edit_user_path(user)) }
 			scenario { page.should have_link('Sign Out', href: signout_path) }
@@ -46,7 +47,12 @@ feature 'Authentication Pages' do
 		
 		context "for non-signed-in users" do
 			let(:user) { FactoryGirl.create(:user) }			
+			
 			context "in the Users controller" do 
+				context "visiting the user index" do
+					before { visit users_path }
+					scenario { page.should have_title("Sign In") }
+				end
 				context "visiting the edit page" do
 					before { visit edit_user_path(user) }
 					scenario { page.should have_title('Sign In') }
@@ -56,6 +62,7 @@ feature 'Authentication Pages' do
 					specify { expect(response).to redirect_to(signin_path) }
 				end
 			end
+			
 			context "when attempting to visit a protected page" do
 				before do
 					visit edit_user_path(user)

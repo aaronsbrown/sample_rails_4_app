@@ -56,6 +56,22 @@ feature "User pages" do
 		end
 	end
 
+	context "Index Page" do
+		before do
+			signin FactoryGirl.create(:user)
+			FactoryGirl.create(:user, name: "Bob", email: "bob@ex.com")
+			FactoryGirl.create(:user, name: "Ben", email: "ben@ex.com")
+			visit users_path
+		end
+		scenario { page.should have_title('All users') }
+		scenario { page.should have_content('All users') }
+		scenario "should list each user" do
+			User.all.each do |user|
+				expect(page).to have_selector('li', text: user.name)
+			end
+		end
+	end
+
 	context "Profile Page" do
 		let(:user) { FactoryGirl.create(:user) }
 		before { visit user_path(user) }
