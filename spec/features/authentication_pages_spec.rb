@@ -90,6 +90,16 @@ feature 'Authentication Pages' do
 				specify { expect(response).to redirect_to(root_path) }
 			end
 		end
+
+		context "as non-admin user" do
+			let(:user) { FactoryGirl.create(:user) }
+			let(:non_admin) { FactoryGirl.create(:user) }
+			before { signin non_admin, no_capybara: true }
+			context "submitting a DELETE requests to the #destroy action" do
+				before { delete user_path(user) }
+				specify { expect(response).to redirect_to(root_path)}
+			end
+		end
 	end
 
 
