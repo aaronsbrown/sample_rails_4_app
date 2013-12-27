@@ -13,6 +13,9 @@ gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem 'pg', '0.15.1'
 gem 'bcrypt-ruby', '3.1.2'
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :development do
   gem 'sqlite3', '1.3.8'

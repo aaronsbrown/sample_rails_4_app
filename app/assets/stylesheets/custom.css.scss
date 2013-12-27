@@ -129,6 +129,23 @@ footer {
 	@extend .has-error;
 }
 
+
+.users {
+	overflow: auto;
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+	li {
+		float:left;
+		width: 100%;
+		padding: 10px 0;
+		border-top: 1px solid $gray-light;
+		&:last-child {
+			border-bottom: 1px solid $gray-light;
+		}
+	}
+}
+
 /* misc */
 
 .debug_dump {
