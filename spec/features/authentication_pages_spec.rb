@@ -2,6 +2,15 @@ require 'spec_helper'
 
 feature 'Authentication Pages' do
 
+	context "signed out nav" do
+		before { visit root_path }
+		scenario { page.should_not have_link('Users')}
+		scenario { page.should_not have_link('Profile') }
+		scenario { page.should_not have_link('Settings') }
+		scenario { page.should_not have_link('Sign Out') }
+		scenario { page.should have_link('Sign In') }
+	end
+
 	context "signin" do
 		
 		before { visit signin_path }
@@ -70,6 +79,14 @@ feature 'Authentication Pages' do
 				end
 				context "after signing in" do
 					scenario { expect(page).to have_title('Edit User') }
+
+					context "when signing in again" do 
+						before do
+							# delete signout_path TODOAB: for some reason current_user is nil
+							signin user
+						end
+						scenario { expect(page).to have_title(user.name)}
+					end
 				end
 			end
 		end	
@@ -101,6 +118,4 @@ feature 'Authentication Pages' do
 			end
 		end
 	end
-
-
 end
