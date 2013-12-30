@@ -108,7 +108,27 @@ footer {
 		margin-top: 0px;
 	}
 }
-
+.microposts {
+	list-style: none;
+	margin: 10px 0 0 0;
+	padding: 0;
+	li { 
+		padding: 10px 0;
+		border-top: 1px solid #e8e8e8;
+	}
+}
+.content {
+	display: block;
+}
+.timestamp {
+	color: $gray-light;
+}
+aside {
+	textarea {
+		height: 100px;
+		margin-bottom: 5px;
+	}
+}
 .gravatar {
 	float: left;
 	margin-right: 10px;
