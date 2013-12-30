@@ -1,3 +1,11 @@
+<% if signed_in? %>
+<div class="row">
+	<aside class="col-sm-5">
+		<section class="user-info"><%= render 'shared/user_info' %></section>
+		<section class="micropost-form"><%= render 'shared/micropost_form' %></section>
+	</aside>
+</div>
+<% else %>
 <div class="center jumbotron">
   <h1>Welcome to the Sample App</h1>
   <h2>
@@ -8,3 +16,4 @@
   <%= link_to "Sign up now!", signup_path, class: 'btn btn-large btn-primary' %>
 </div>
 <%= link_to image_tag("rails.png", alt: 'rails'), 'http://rubyonrails.org' %>
+<% end %>
