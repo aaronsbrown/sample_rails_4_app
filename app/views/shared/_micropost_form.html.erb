@@ -2,7 +2,12 @@
 	<%= render 'shared/error_messages', object: f.object %>
 	<div class="row">
 		<div class="form-group col-sm-12">
-			<%= f.text_area :content, placeholder: 'Compose new micropost...',  class: "form-control" %>
+			<%= f.text_area :content, placeholder: 'Compose new micropost...',  class: "form-control", maxlength: 140 %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-sm-12">
+			<p>You have <span id="char-count">140</span> characters left.</p>
 		</div>
 	</div>
 	<div class="row">
