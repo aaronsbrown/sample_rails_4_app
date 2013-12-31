@@ -1,6 +1,5 @@
 <%= form_for(@user) do |f| %>
-	<%= render 'shared/error_messages' %>
-	
+	<%= render 'shared/error_messages', object: f.object %>	
 	<div class="row">
 		<div class="form-group col-sm-6">
 			<%= f.label :name, class: 'control-label' %>

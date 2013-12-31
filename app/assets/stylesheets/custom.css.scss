@@ -13,13 +13,16 @@ section { overflow: auto }
 
 textarea {resize: vertical; }
 
+ul, ol { padding: 0; }
+
+h3 { margin-top: 0 ; }
+
 .center { 
 	text-align: center;
 
 	h1 {
 		margin-bottom: 10px;
 	}
-
 }
 
 
@@ -109,6 +112,32 @@ footer {
 	}
 }
 
+.micropost-form {
+	margin-top: 20px;
+	border-top: 1px solid $gray-light;
+	padding-top: 20px;
+}
+
+.microposts {
+	list-style: none;
+	margin: 10px 0 0 0;
+	li { 
+		padding: 10px 0;
+		border-top: 1px solid #e8e8e8;
+	}
+}
+.content {
+	display: block;
+}
+.timestamp {
+	color: $gray-light;
+}
+aside {
+	textarea {
+		height: 100px;
+		margin-bottom: 5px;
+	}
+}
 .gravatar {
 	float: left;
 	margin-right: 10px;

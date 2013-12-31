@@ -89,6 +89,18 @@ feature 'Authentication Pages' do
 					end
 				end
 			end
+
+			context "in the Microposts controller" do
+				context "submitting to the create action" do
+					before { post microposts_path }
+					specify { expect(response).to redirect_to(signin_path) }
+				end
+				context "submitting the destroy action" do
+					before { delete micropost_path(FactoryGirl.create(:micropost)) }
+					specify { expect(response).to redirect_to(signin_path) }
+				end
+			end
+
 		end	
 
 		context "as wrong user" do
